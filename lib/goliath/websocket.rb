@@ -6,6 +6,8 @@ module Goliath
 
     def on_open(env) ; end
     def on_message(env, msg) ; end
+    def on_ping(env, data) ; end
+    def on_pong(env, data) ; end
     def on_close(env) ; end
     def on_error(env, error) ; end
 
@@ -57,6 +59,14 @@ module Goliath
 
         def trigger_on_message(msg)
           @parent.on_message(@env, msg)
+        end
+
+        def trigger_on_ping(data)
+          @parent.on_ping(@env, data)
+        end
+
+        def trigger_on_pong(data)
+          @parent.on_pong(@env, data)
         end
 
         def close_connection
